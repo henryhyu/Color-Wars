@@ -1,0 +1,46 @@
+<project default="compile">
+
+  <!-- build.xml for lab02, W16, CS56
+       name: Alex Thielk, Domenic DiPeppe -->
+   <property environment="env"/> <!-- load the environment variables --> 
+
+  <target name="compile" description="compile my code">
+    <mkdir dir="build" />
+    <javac srcdir="src" destdir="build" debug="true" debuglevel="lines,source" includeantruntime="false">
+      
+      <classpath>                                                                                                                              
+         <pathelement location="build"/>                                                                                                          
+         <pathelement location="lib/junit-4.8.2.jar"/>                                                   
+     </classpath>                                                                                                                             
+    </javac>       
+  </target>
+  
+  <target name="run" depends="compile" description="run the UCSBCourseTester program">
+    <java classname="UCSBCourseTester" classpath="build" />
+  </target>
+  
+  <target name="clean" description="delete unnecessary files and directories">
+    <delete dir ="build" quiet="true" />
+  </target>
+
+  <target name="test" depends="compile">
+    
+    <junit haltonerror="no" haltonfailure="no">
+       <classpath>
+         <pathelement location="lib/junit-4.8.2.jar"/>
+         <pathelement location="build"/>
+       </classpath>
+
+       <batchtest fork="yes">
+         <fileset dir="src">
+           <!-- this will pick up every class with a name ending in Test -->
+           <include name="*Test.java"/>
+         </fileset>
+       </batchtest>
+
+       <formatter type="plain" usefile="false" /> 
+       
+    </junit>
+  </target>
+  
+</project>
