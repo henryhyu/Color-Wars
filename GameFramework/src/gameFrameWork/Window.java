@@ -1,10 +1,10 @@
 package gameFrameWork;
 
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 
+@SuppressWarnings("serial")
 public class Window extends JFrame{
-	
+
 	private Window(){
 		this.setTitle("Color Wars");	
 		this.setSize(1024,768);
@@ -14,12 +14,17 @@ public class Window extends JFrame{
 		this.setVisible(true);
 	}
 	
-	public static void main(String args[]){
-			SwingUtilities.invokeLater(new Runnable() { //creates a new thread (more research to come)
-				@Override
-				public void run(){ //run() is defined by the Runnable interface and is used to execute
-					new Window();  //this line of code
-				}
-			});
-		}
-}
+	public static void main(String args[]) throws InterruptedException{
+			
+		Window window = new Window();  
+		Canvas canvas = new Canvas();
+		window.add(canvas);
+		
+		while(true){
+			window.repaint();
+			Thread.sleep(10);			
+		}	
+		
+	}//end main
+	
+}//end class
