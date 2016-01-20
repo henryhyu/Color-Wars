@@ -16,6 +16,7 @@ public class Canvas extends JPanel{
 	public void paint(Graphics g) {
 		super.paint(g);
 		
+		t.draw(g);
 		c.draw(g);
 		c.move();
 		
