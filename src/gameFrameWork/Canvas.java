@@ -6,23 +6,20 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 import character.Circle;
-//import character.Triangle;
 
 @SuppressWarnings("serial")
 public class Canvas extends JPanel{
 
-	Circle c = new Circle(100, 100, Color.RED);
-//	Triangle t = new Triangle(50, 50, Color.GREEN);
+	Circle c = new Circle(-50,-50,10, 100, Color.RED);
 	
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
 		
-//		t.draw(g);
-//		t.move();
 		c.draw(g);
 		c.move();
+		
 	    
 	}
-	
+
 }
