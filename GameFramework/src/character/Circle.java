@@ -7,8 +7,8 @@ import java.awt.RenderingHints;
 
 public class Circle extends Enemy {
 
-	public Circle(int health, int size, Color color) {
-		super(health, size, color);
+	public Circle(int x, int y, int size, int health, Color color) {
+		super(x, y, size, health, color);
 	}
 
 	@Override
@@ -18,17 +18,13 @@ public class Circle extends Enemy {
 				RenderingHints.VALUE_ANTIALIAS_ON);
 		
 		g2d.setColor(this.color);
-		g2d.fillOval(x, y, this.size, this.size);
+		g2d.fillOval(this.x, this.y, this.size, this.size);
 	}
-
-	
-	int x = 0;
-	int y = 0;
 	
 	@Override
 	public void move() {
-		x = x+1;
-		y = y+1;
+		this.x = this.x+2;
+		this.y = this.y+2;
 	}
 
 }
